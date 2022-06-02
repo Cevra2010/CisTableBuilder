@@ -2,6 +2,7 @@
 namespace CisFoundation\CisTableBuilder;
 
 use CisFoundation\CisTableBuilder\Component\CisTableComponent;
+use CisFoundation\CisTableBuilder\Exception\NoFieldsSetException;
 use CisFoundation\CisTableBuilder\Exception\TableNotFoundException;
 use Illuminate\Support\Facades\Blade;
 
@@ -34,6 +35,9 @@ class CisTableBuilder {
      */
     public static function get($tableName) {
         if($searchedTable = self::$tables->where('name',$tableName)->first()) {
+            if(!$searchedTable->getFields()) {
+                throw new NoFieldsSetException('There are not fields set for the tabel "'.$searchedTable->name.'"');
+            }
             return $searchedTable;
         }
         else {

@@ -1,6 +1,8 @@
 <?php
 namespace CisFoundation\CisTableBuilder;
 
+use stdClass;
+
 class CisTable {
 
     /**
@@ -32,6 +34,13 @@ class CisTable {
     protected $fields;
 
     /**
+     * Actions collection
+     *
+     * @var mixed
+     */
+    protected $actions;
+
+    /**
      * Custructing the table object instance
      * set name of table
      *
@@ -40,6 +49,7 @@ class CisTable {
     public function __construct($tableName)
     {
         $this->name = $tableName;
+        $this->actions = collect();
     }
 
     /**
@@ -68,6 +78,20 @@ class CisTable {
 
     public function getData() {
         return $this->data;
+    }
+
+    public function addAction($name,$route,$parameters = null,$method = "get") {
+        $action = new CisTableAction();
+        $action->setName($name);
+        $action->setRoute($route);
+        $action->setParameters($parameters);
+        $action->setMethod($method);
+
+        $this->actions->add($action);
+    }
+
+    public function getActions() {
+        return $this->actions;
     }
 
     /**

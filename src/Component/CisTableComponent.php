@@ -17,6 +17,7 @@ class CisTableComponent extends Component {
     public $cssClass;
     public $fields;
     public $tableData;
+    public $actions;
 
 
     public function __construct($name)
@@ -38,6 +39,7 @@ class CisTableComponent extends Component {
         $this->cssClass = $table->getCssClass();
         $this->fields = $table->getFields();
         $this->tableData = $table->getData();
+        $this->actions = $table->getActions();
 
         /** return the view */
         return view("cis-table-builder::table");
