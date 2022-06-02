@@ -149,6 +149,11 @@ class CisTable {
         }
     }
 
+    /**
+     * Retrurn the filterd und paginated data
+     *
+     * @return void
+     */
     private function searchOption() {
         if($this->search && request()->get("search")) {
             $class = "{$this->data}::where";
@@ -174,6 +179,15 @@ class CisTable {
         }
     }
 
+    /**
+     * Adds an action to the table
+     *
+     * @param string $name
+     * @param string $route
+     * @param array $parameters
+     * @param string $method
+     * @return CisTable
+     */
     public function addAction($name,$route,$parameters = null,$method = "get") {
         $action = new CisTableAction();
         $action->setName($name);
@@ -186,6 +200,11 @@ class CisTable {
         return $this;
     }
 
+    /**
+     * Return all actions
+     *
+     * @return Collection
+     */
     public function getActions() {
         return $this->actions;
     }

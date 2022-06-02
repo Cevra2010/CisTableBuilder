@@ -8,22 +8,74 @@ use Illuminate\View\Component;
 
 class CisTableComponent extends Component {
 
-
+    /**
+     * Name of action
+     *
+     * @var string
+     */
     protected $name;
 
-    /* Register
-    *
-    * @param string $slug
-    */
-
+    /**
+     * Css class of table
+     *
+     * @var string
+     */
     public $cssClass;
+
+    /**
+     * fields
+     *
+     * @var array
+     */
     public $fields;
+
+    /**
+     * Table data
+     *
+     * @var mixed
+     */
     public $tableData;
+
+    /**
+     * actions
+     *
+     * @var array
+     */
     public $actions;
+
+    /**
+     * pagination
+     *
+     * @var boolean
+     */
     public $pagination;
+
+    /**
+     * search
+     *
+     * @var boolean
+     */
     public $search;
+
+    /**
+     * search route
+     *
+     * @var string
+     */
     public $searchRoute = null;
+
+    /**
+     * limit per page
+     *
+     * @var integer
+     */
     public $perpage;
+
+    /**
+     * Undocumented variable
+     *
+     * @var [type]
+     */
     public $resetFilersRoute;
 
 
