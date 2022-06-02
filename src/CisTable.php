@@ -13,6 +13,13 @@ class CisTable {
     public $name;
 
     /**
+     * Pagination
+     *
+     * @var boolean
+     */
+    public $pagination = false;
+
+    /**
      * Name of css class for table
      *
      * @var string
@@ -102,6 +109,13 @@ class CisTable {
      */
     public function setData($data) {
         $this->data = $data;
+        if(method_exists($this->data,'links')) {
+            $this->pagination = true;
+        }
+    }
+
+    public function hasPages() {
+        return $this->pagination;
     }
 
     /**

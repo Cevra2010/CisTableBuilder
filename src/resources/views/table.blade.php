@@ -1,4 +1,8 @@
-
+@if($pagination)
+    <div class="mb-4">
+        {{ $tableData->links() }}
+    </div>
+@endif
 <table class="{{ $cssClass }}">
     <thead>
         <tr>
@@ -35,3 +39,9 @@
         @endforeach
     </tbody>
 </table>
+
+@if($pagination)
+    <div class="mt-4">
+        {{ $tableData->links() }}
+    </div>
+@endif
