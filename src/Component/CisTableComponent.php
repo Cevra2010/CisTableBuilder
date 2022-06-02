@@ -2,6 +2,8 @@
 namespace CisFoundation\CisTableBuilder\Component;
 
 use CisFoundation\CisTableBuilder\CisTableBuilder;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
 
 class CisTableComponent extends Component {
@@ -19,6 +21,10 @@ class CisTableComponent extends Component {
     public $tableData;
     public $actions;
     public $pagination;
+    public $search;
+    public $searchRoute = null;
+    public $perpage;
+    public $resetFilersRoute;
 
 
     public function __construct($name)
@@ -41,8 +47,12 @@ class CisTableComponent extends Component {
         $this->fields = $table->getFields();
         $this->tableData = $table->getData();
         $this->actions = $table->getActions();
+        $this->search = $table->isSearchEnabled();
+        $this->resetFilersRoute = route(Route::getCurrentRoute()->getName());
         if($table->hasPages()) {
             $this->pagination = true;
+            $this->searchRoute = Request::url();
+            $this->perpage = $table->getPerPage();
         }
 
         /** return the view */

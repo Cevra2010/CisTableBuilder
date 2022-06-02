@@ -3,6 +3,26 @@
         {{ $tableData->links() }}
     </div>
 @endif
+
+<div class="flex">
+    @if($search || $pagination)
+        <form class="space-x-2" action="{{ $searchRoute }}" method="GET">
+            @csrf
+            @if($pagination)
+            <label>Anzahl</label>
+            <input type="text" name="perpage" value="{{ $perpage }}" class="form-input w-20">
+            @endif
+
+            @if($search)
+            <label>Suchen</label>
+            <input type="text" name="search" value="{{ request()->get("search") }}" class="form-input">
+            @endif
+            <button type="submit" class="form-button">Filtern</button>
+            <a href="{{ $resetFilersRoute }}" class="form-button bg-purple-400"><i class="fa fa-close"></i></a>
+        </form>
+    @endif
+</div>
+
 <table class="{{ $cssClass }}">
     <thead>
         <tr>
