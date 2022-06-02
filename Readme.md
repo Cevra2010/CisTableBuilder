@@ -28,10 +28,9 @@ $table->setFields([
 ```
 ###### Set some action links for the the actions row
 ```
-$table->addAction('ändern',"modules.show",['name' => 'func:getName']);
+$table->addAction('edit',"user.edit",['id']);
 ```
-
-
-$table->addAction('ändern',"modules.show",['name' => 'func:getName']);
-$table->addAction('löschen',"modules.show",['name' => 'func:getName'],'post');
+###### Set some action by a method
+```
+$table->addAction('show fullname',"user.show-full-name",['fullname' => 'func:showfullName']);
 ```
