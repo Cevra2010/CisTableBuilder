@@ -138,8 +138,10 @@ class CisTable {
     }
 
     public function getData() {
-
-        if($this->data instanceof Collection) {
+        if(is_array($this->data)) {
+            return $this->data;
+        }
+        elseif($this->data instanceof Collection) {
             return $this->data;
         }
         else {
@@ -196,13 +198,6 @@ class CisTable {
      */
     public function setData($data) {
         $this->data = $data;
-
-
-        if(method_exists($this->data,'links')) {
-            $this->pagination = true;
-        }
-
-
         return $this;
     }
 
