@@ -1,6 +1,6 @@
 @if($pagination)
     <div class="mb-4">
-        {{ $tableData->links() }}
+        {{ $tableData->links("cis-table-builder::pagination",['perpage' => $perpage,'search' => request()->get("search")]) }}
     </div>
 @endif
 
@@ -9,12 +9,12 @@
         <form class="space-x-2" action="{{ $searchRoute }}" method="GET">
             @csrf
             @if($pagination)
-            <label>Anzahl</label>
+            <label>Limit:</label>
             <input type="text" name="perpage" value="{{ $perpage }}" class="form-input w-20">
             @endif
 
             @if($search)
-            <label>Suchen</label>
+            <label>Suchbegriff:</label>
             <input type="text" name="search" value="{{ request()->get("search") }}" class="form-input">
             @endif
             <button type="submit" class="form-button">Filtern</button>
@@ -62,6 +62,6 @@
 
 @if($pagination)
     <div class="mt-4">
-        {{ $tableData->links() }}
+        {{ $tableData->links("cis-table-builder::pagination",['perpage' => $perpage,'search' => request()->get("search")]) }}
     </div>
 @endif
