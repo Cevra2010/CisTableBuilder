@@ -1,14 +1,8 @@
 <?php
 namespace CisFoundation\CisTableBuilder;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
-use stdClass;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Reflector;
-use Reflection;
-use ReflectionClass;
-use ReflectionMethod;
+
 
 class CisTable {
 
