@@ -39,8 +39,15 @@ $table->setData($myCollection);
 $table->setFields([
     'id' => 'ID',
     'username' => 'Username',
-]);
+    'created_at' => 'Created at',
+ ]);
 ```
+
+###### Format to datetime format
+```
+$table->setDateTime('created_at','d.m.Y H:i');
+```
+
 ###### Set some action links for the the actions row
 ```
 $table->addAction('edit',"user.edit",['id']);
