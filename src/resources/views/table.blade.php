@@ -6,19 +6,19 @@
 
 <div class="flex">
     @if($search || $pagination)
-        <form class="space-x-2" action="{{ $searchRoute }}" method="GET">
+        <form class="space-x-2 mb-4" action="{{ $searchRoute }}" method="GET">
             @csrf
             @if($pagination)
-            <label>Limit:</label>
-            <input type="text" name="perpage" value="{{ $perpage }}" class="form-input w-20">
+            <label class="cis-form-label">Limit:</label>
+            <input type="text" name="perpage" value="{{ $perpage }}" class="cis-form-input w-20">
             @endif
 
             @if($search)
-            <label>Suchbegriff:</label>
-            <input type="text" name="search" value="{{ request()->get("search") }}" class="form-input">
+            <label class="cis-form-label">Suchbegriff:</label>
+            <input type="text" name="search" value="{{ request()->get("search") }}" class="cis-form-input">
             @endif
-            <button type="submit" class="form-button">Filtern</button>
-            <a href="{{ $resetFilersRoute }}" class="form-button bg-purple-400"><i class="fa fa-close"></i></a>
+            <button type="submit" class="cis-form-button">Filtern</button>
+            <a href="{{ $resetFilersRoute }}" class="cis-form-button bg-purple-400"><i class="fa fa-close"></i></a>
         </form>
     @endif
 </div>
@@ -27,10 +27,10 @@
     <thead>
         <tr>
             @foreach($fields as $field_name)
-                <th>{{ $field_name }}</th>
+                <th>{{ __($field_name) }}</th>
             @endforeach
             @if($actions->count())
-                <th>Aktionen</th>
+                <th>{{ __("Aktionen") }}</th>
             @endif
         </tr>
     </thead>
