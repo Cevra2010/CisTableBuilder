@@ -70,6 +70,13 @@ class CisTable {
     protected $actions;
 
     /**
+     * DateTimes
+     *
+     * @var array
+     */
+    protected $dateTimes;
+
+    /**
      * Custructing the table object instance
      * set name of table
      *
@@ -256,5 +263,14 @@ class CisTable {
 
     public function getPerPage() {
         return $this->paginationLimit;
+    }
+
+    public function setDatetime($field,$DateTimeformat) {
+        $this->dateTimes[$field] = $DateTimeformat;
+        return $this;
+    }
+
+    public function getDateTimes() {
+        return $this->dateTimes;
     }
 }

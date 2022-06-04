@@ -39,7 +39,13 @@
             <tr>
                 @foreach($fields as $field_key => $field_value)
                     @isset($data->$field_key)
-                        <td>{{ $data->$field_key }}</td>
+                        <td>
+                            @if(array_key_exists($field_key,$dateTimes))
+                                {{ Carbon\Carbon::create($data->$field_key)->format($dateTimes[$field_key]) }}
+                            @else
+                                {{ $data->$field_key }}
+                            @endif
+                        </td>
                     @else
                         @if($data->$field_key())
                             <td>{{ $data->$field_key() }}</td>

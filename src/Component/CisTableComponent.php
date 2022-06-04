@@ -79,6 +79,9 @@ class CisTableComponent extends Component {
     public $resetFilersRoute;
 
 
+    /** */
+    public $dateTimes = [];
+
     public function __construct($name)
     {
         $this->name = $name;
@@ -101,6 +104,7 @@ class CisTableComponent extends Component {
         $this->actions = $table->getActions();
         $this->search = $table->isSearchEnabled();
         $this->resetFilersRoute = route(Route::getCurrentRoute()->getName());
+        $this->dateTimes = $table->getDateTimes();
         if($table->hasPages()) {
             $this->pagination = true;
             $this->searchRoute = Request::url();
